@@ -90,13 +90,13 @@ for i in range(len(total_files)):
     casename = total_files[i].split('\\')[-1].split('.')[0]
     temp = Get_simple_vtk(total_files[i])
     temp = translate_to_centroid(temp)
-    temp_func = parameterize_curve(temp)
-    t_resampled = np.linspace(0, 1, resample_num)
-    resampled_curve = temp_func(t_resampled)
+    temp_func = parameterize_curve(temp) # 重参数化，归一化，成了单位长度
+    t_resampled = np.linspace(0, 1, resample_num) # 重采样，生成一个从 0 到 1 的均匀分布
+    resampled_curve = temp_func(t_resampled) # 用重采样的 t 值生成新的曲线
     curves.append(resampled_curve)
     c, t = compute_curvature_and_torsion(resampled_curve)
     ax1.plot(c, label=casename)
-    fft_c = remove_high_freq_components(c, freq_threshold )
+    fft_c = remove_high_freq_components(c, freq_threshold ) # 傅里叶变换去高频
     rebuild = build_curve_from_curvatures(fft_c, step_length=0.1)
     ax2.plot(fft_c, label=casename)
     ax1.set_title('Curvature')
@@ -119,11 +119,11 @@ k_sampling_points = resample_num
 
 curves_r3 = DiscreteCurvesStartingAtOrigin(
     ambient_dim=3, k_sampling_points=k_sampling_points, equip=False
-)
+) # geomstats库中的类,初始化曲线空间
 
-curves_r3.equip_with_metric(SRVMetric)
+curves_r3.equip_with_metric(SRVMetric) # geomstats库中的类,配置SRV度量
 curve_a = curves_r3.projection(curves[0])
-curve_a = curves_r3.normalize(curve_a)
+curve_a = curves_r3.normalize(curve_a) # 缩放为单位长度
 curve_bs = []
 curve_bs.append(curve_a)
 fig= plt.figure(dpi=200)

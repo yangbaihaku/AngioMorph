@@ -1,0 +1,15 @@
+{
+    // 指定 Python 解释器路径
+    "python.pythonPath": "C:\\Users\\14014\\anaconda3\\envs\\chen_conda_ev\\python.exe",
+    // 指定环境变量文件位置
+    "python.envFile": "${workspaceFolder}/.env",
+    // Code Runner 执行器配置，确保使用正确的解释器
+    "code-runner.executorMap": {
+        "python": "\"C:\\\\Users\\\\14014\\\\anaconda3\\\\envs\\\\chen_conda_ev\\\\python.exe\" \"$fullFileName\""
+    },
+
+    // 其他可能的通用设置
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    // 增加更多设置根据你的需要
+}

@@ -29,6 +29,7 @@ def parameterize_curve(Curve):
     # `points_on_curve` 将包含根据提供的t值在曲线上插值得到的点。
 
     # 创建参数t的值，均匀分布在0到1之间
+    #  Curve.shape[0] 曲线控制点的数量
     t_values = np.linspace(0, 1, Curve.shape[0])
 
     # 创建三个独立的插值函数，分别对应x, y, z坐标
