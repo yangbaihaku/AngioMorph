@@ -234,3 +234,4 @@ save_dir = mkdir("./", "geom_aligned_curves")
 # curve_bs = np.array(curve_bs)
 np.save(save_dir+"geomstats_aligned_to_first.npy", curve_bs)
 np.save(save_dir+"geomstats_aligned_to_frechet.npy", curve_cs)
+
